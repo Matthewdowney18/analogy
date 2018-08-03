@@ -4,6 +4,7 @@ import os
 import requests
 import random
 import numpy as np
+from sklearn.metrics import precision_recall_fscore_support
 from sklearn.linear_model import LogisticRegression
 import json
 import matplotlib.pyplot as plt
@@ -25,20 +26,46 @@ class Classification:
         f.write(s)
         f.close()
 
+    def get_precision_recall(self, true, pred):
+        if sum(true) != 0:
+            X = true - pred
+            tp = 0.0
+            fp = 0.0
+            fn = 0.0
+            for i in range(0, len(true)):
+                if X[i] == 0 and true[i] == 1:
+                    tp += 1
+                elif X[i] == 1:
+                    fn += 1
+                elif X[i] == -1:
+                    fp += 1
+            precision = tp/(tp+fp)
+            recall = tp/(tp+fn)
+            fscore = 2*precision*recall/(precision+recall)
+            return precision, recall, fscore
+        else:
+            return 0, 0, 0
+
     def get_results(self, predictions, Y_test, words):
         results = {}
         predictions2 = []
         num_correct = 0
+
         for i in range(0, len(predictions)):
             dictonary = {}
             dictonary['word'] = words[(-10 + i)]
             dictonary['predicted class'] = str(predictions[i])
             dictonary['actual class'] = str(Y_test[i])
-            predictions2.append(dict)
-
+            predictions2.append(dictonary)
             if Y_test[i] == predictions[i]:
                 num_correct += 1
-
+        precision, recall, fscore  = self.get_precision_recall(Y_test, predictions)
+        #pr = precision_recall_fscore_support(Y_test, predictions, average='macro')
+        results['precision'] = precision
+        results['recall'] = recall
+        results['fscore'] = fscore
+        results['train_size'] = self.train_size
+        results['test_size'] = self.test_size
         results['predictions'] = predictions2
         results['num_correct'] = num_correct
         return results
@@ -52,7 +79,7 @@ class Classification:
             y.append(self.dict[key]['class'])
         X = np.array(x)
         Y = np.array(y)
-        return X, Y
+        return X, Y, len(X)
 
     def get_negative_examples(self):
         dict = {}
@@ -90,24 +117,36 @@ class Classification:
     def run(self):
         results = {}
         results['embeddings'] = self.embedding.metadata
-        for file_name in os.listdir(self.dataset_dir):
+        for file_name in os.listdir(self.dataset_dir)[:5]:
+            precision = list()
+            recall = list()
+            fscore = list()
+            testsizes = range(1,40)
             category = file_name[:-3]
             print(category)
-            file = open(self.dataset_dir + file_name, "r")
-            self.dict = self.make_data(file, category)
-            words = list(self.dict.keys())
-            random.shuffle(words)
-            X_train, Y_train = self.get_vectors(words[:-11])
-            X_test, Y_test = self.get_vectors(words[-10:])
+            for testsize in testsizes:
+                file = open(self.dataset_dir + file_name, "r")
+                self.dict = self.make_data(file, category)
+                words = list(self.dict.keys())
+                random.shuffle(words)
+                X_train, Y_train, self.train_size = self.get_vectors(words[:-(testsize +1)])
+                X_test, Y_test, self.test_size = self.get_vectors(words[-(testsize):])
 
-            model_regression = LogisticRegression(
-                class_weight='balanced',
-                C=1)
-            model_regression.fit(X_train, Y_train)
-            prediction = model_regression.predict(X_test)
-            results[category] = self.get_results(prediction, Y_test, words)
-            print(results)
-        self.save_json(results, '/home/downey/PycharmProjects/word_classifacation/data.json')
+                model_regression = LogisticRegression(
+                    class_weight='balanced',
+                    C=1)
+                model_regression.fit(X_train, Y_train)
+                prediction = model_regression.predict(X_test)
+                results[category] = self.get_results(prediction, Y_test, words)
+                precision.append(results[category]['precision'])
+                recall.append(results[category]['recall'])
+                fscore.append(results[category]['fscore'])
+            fig, (p, r) = plt.subplot(2, 1, sharex=True, sharey=True)
+            p.plot(testsizes, precision, title='precision')
+            r.plot(testsizes, recall, title='recall')
+            #f.plot(testsizes, fscore, title='fscore')
+            plt.show()
+        self.save_json(results, '/home/downey/PycharmProjects/word_classifacation/data1.json')
 
 def main():
     embedding_dir  ='/home/downey/PycharmProjects/vecto_analogies/embeddings/structured_linear_cbow_500d'
