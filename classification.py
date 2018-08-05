@@ -12,6 +12,12 @@ from sklearn.neural_network import MLPClassifier
 
 
 def save_json(results, path):
+    '''
+    saves the jason file
+    Args:
+        results:the dictionary
+        path:the path to save it tt
+    '''
     basedir = os.path.dirname(path)
     os.makedirs(basedir, exist_ok=True)
     info = json.dumps(results, ensure_ascii=False, indent=4, sort_keys=False)
@@ -21,6 +27,7 @@ def save_json(results, path):
 
 
 def plot(precision, recall, fscore, testsizes, category):
+
     plt.subplot(3, 1, 1)
     plt.plot(testsizes, precision)
     plt.title(category)
@@ -34,18 +41,20 @@ def plot(precision, recall, fscore, testsizes, category):
     plt.xlabel('test size')
     plt.show()
 
-class Classification:
-    def __init__(self, embedding_dir, dataset_dir, normalize=True,
-                 ignore_oov=True,
-                 do_top5=True,
-                 need_subsample=False,
-                 size_cv_test=1,
-                 set_aprimes_test=None,
-                 inverse_regularization_strength=1,
-                 exclude=True,
-                 name_classifier='NN',
-                 name_kernel="rbf",
-                 hidden_layer_sizes=()):
+
+class Classifier:
+    def __init__(self, normalize=True,
+             ignore_oov=True,
+             do_top5=True,
+             need_subsample=False,
+             size_cv_test=1,
+             set_aprimes_test=None,
+             inverse_regularization_strength=1,
+             exclude=True,
+             name_classifier='NN',
+             name_kernel="rbf",
+             hidden_layer_sizes=()):
+
         self.hidden_layer_sizes = hidden_layer_sizes
         self.normalize = normalize
         self.ignore_oov = ignore_oov
@@ -62,13 +71,32 @@ class Classification:
         self.precision_total = list()
         self.recall_total = list()
         self.fscore_total = list()
-        self.test_words = []
-        self.train_size = 0
-        self.test_size = 0
-        self.dict = {}
-        self.embedding_dir = embedding_dir
-        self.dataset_dir = dataset_dir
-        self.embedding = vecto.embeddings.load_from_dir(self.embedding_dir)
+
+    def get_results(self, predictions, y_test, data):
+        results = dict()
+        predictions2 = list()
+        num_correct = int(0)
+
+        for i, prediction in enumerate(predictions, 0):
+            dictonary = dict()
+            dictonary['word'] = data.test_words[i]
+            dictonary['predicted class'] = str(predictions[i])
+            dictonary['actual class'] = str(y_test[i])
+            predictions2.append(dictonary)
+            if y_test[i] == predictions[i]:
+                num_correct += 1
+        precision, recall, fscore = self.get_precision_recall(y_test,
+                                                              predictions)
+        # pr = precision_recall_fscore_support(Y_test,
+        #  predictions, average='macro')
+        results['precision'] = precision
+        results['recall'] = recall
+        results['fscore'] = fscore
+        results['train_size'] = data.train_size
+        results['test_size'] = data.test_size
+        results['predictions'] = predictions2
+        results['num_correct'] = num_correct
+        return results
 
     def make_dict(self):
         dictionary = dict()
@@ -111,31 +139,64 @@ class Classification:
 
         return precision, recall, fscore
 
-    def get_results(self, predictions, Y_test):
-        results = {}
-        predictions2 = []
-        num_correct = 0
+    def run(self, embedding_dir, dataset_dir, test_size, result_file_name):
+        data = Data(embedding_dir)
+        results = dict()
+        results['embeddings'] = data.embedding.metadata
+        results['classifier'] = self.make_dict()
+        for file_name in os.listdir(dataset_dir):
+            category = file_name[:-3]
+            print(category)
+            file = open(dataset_dir + file_name, "r")
 
-        for i in range(0, len(predictions)):
-            dictonary = {}
-            dictonary['word'] = self.test_words[i]
-            dictonary['predicted class'] = str(predictions[i])
-            dictonary['actual class'] = str(Y_test[i])
-            predictions2.append(dictonary)
-            if Y_test[i] == predictions[i]:
-                num_correct += 1
-        precision, recall, fscore = self.get_precision_recall(Y_test,
-                                                               predictions)
-        # pr = precision_recall_fscore_support(Y_test,
-        #  predictions, average='macro')
-        results['precision'] = precision
-        results['recall'] = recall
-        results['fscore'] = fscore
-        results['train_size'] = self.train_size
-        results['test_size'] = self.test_size
-        results['predictions'] = predictions2
-        results['num_correct'] = num_correct
-        return results
+            data.make_data(file)
+            words = list(data.dictionary.keys())
+
+            random.shuffle(words)
+
+            x_train, y_train, x_test, y_test = data.get_vectors(words, test_size)
+
+            if self.name_classifier == 'LR':
+                model_regression = LogisticRegression(
+                    class_weight='balanced',
+                    C=self.inverse_regularization_strength)
+            elif self.name_classifier == "SVM":
+                model_regression = sklearn.svm.SVC(
+                    C=self.inverse_regularization_strength,
+                    kernel=self.name_kernel,
+                    cache_size=200,
+                    class_weight='balanced',
+                    probability=True)
+            elif self.name_classifier == "NN":
+                model_regression = MLPClassifier(
+                    activation='logistic',
+                    learning_rate='adaptive',
+                    max_iter=5000,
+                    hidden_layer_sizes=self.hidden_layer_sizes
+                )
+
+            model_regression.fit(x_train, y_train)
+            prediction = model_regression.predict(x_test)
+            results[category] = self.get_results(prediction, y_test, data)
+        results['average precision'] = sum(self.precision_total) / len(
+            self.precision_total)
+        results['average recall'] = sum(self.recall_total) / len(
+            self.recall_total)
+        results['average f-score'] = sum(self.fscore_total) / len(
+            self.fscore_total)
+        save_json(results, '/home/downey/PycharmProjects/word_'
+                           'classifacation/'+ result_file_name +'.json')
+
+
+class Data:
+    def __init__(self, embedding_dir):
+        self.test_words = []
+        self.train_size = 0
+        self.test_size = 0
+        self.dictionary = {}
+
+        self.embedding_dir = embedding_dir
+        self.embedding = vecto.embeddings.load_from_dir(self.embedding_dir)
 
     def get_vectors(self, word_list, testsize):
         words = []
@@ -145,22 +206,21 @@ class Classification:
         y_test = list()
         self.test_words = []
         for count_1 in range(0, testsize):
+            odd = 0
             if count_1 % 2 == 0:
                 odd = 1
             for key in words:
-                if self.dict[key]['class'] == odd:
-                    x_test.append(self.dict[key]['embedding'])
-                    y_test.append(self.dict[key]['class'])
+                if self.dictionary[key]['class'] == odd:
+                    x_test.append(self.dictionary[key]['embedding'])
+                    y_test.append(self.dictionary[key]['class'])
                     self.test_words.append(key)
                     words.remove(key)
                     break
-            odd = 0
-
         x_train = list()
         y_train = list()
         for key in words:
-            x_train.append(self.dict[key]['embedding'])
-            y_train.append(self.dict[key]['class'])
+            x_train.append(self.dictionary[key]['embedding'])
+            y_train.append(self.dictionary[key]['class'])
         x_test = np.array(x_test)
         y_test = np.array(y_test)
         x_train = np.array(x_train)
@@ -180,7 +240,7 @@ class Classification:
             dictionary[words[rand]]['class'] = 0
         return dictionary
 
-    def load_embedding(self, words):
+    def load_positive_examples(self, words):
         # for word in words:
         dictionary = dict()
         for word in words:
@@ -193,53 +253,9 @@ class Classification:
 
     def make_data(self, file):
         x_true_words = [line.split('\t')[1][:-1].split('/')[0] for line in file]
-        dict = self.load_embedding(x_true_words)
-        dict.update(self.get_negative_examples(len(dict)))
-        return dict
-
-    def run(self):
-        results = dict()
-        results['embeddings'] = self.embedding.metadata
-        results['classifier'] = self.make_dict()
-        for file_name in os.listdir(self.dataset_dir):
-            category = file_name[:-3]
-            print(category)
-            file = open(self.dataset_dir + file_name, "r")
-            self.dict = self.make_data(file)
-            words = list(self.dict.keys())
-
-            random.shuffle(words)
-            x_train, y_train, x_test, y_test = self.get_vectors(words, 10)
-            if self.name_classifier == 'LR':
-                model_regression = LogisticRegression(
-                    class_weight='balanced',
-                    C=self.inverse_regularization_strength)
-            if self.name_classifier == "SVM":
-                model_regression = sklearn.svm.SVC(
-                    C=self.inverse_regularization_strength,
-                    kernel=self.name_kernel,
-                    cache_size=200,
-                    class_weight='balanced',
-                    probability=True)
-            if self.name_classifier == "NN":
-                model_regression = MLPClassifier(
-                    activation='logistic',
-                    learning_rate='adaptive',
-                    max_iter=5000,
-                    hidden_layer_sizes=self.hidden_layer_sizes
-                )
-
-            model_regression.fit(x_train, y_train)
-            prediction = model_regression.predict(x_test)
-            results[category] = self.get_results(prediction, y_test)
-        results['average precision'] = sum(self.precision_total)/len(
-            self.precision_total)
-        results['average recall'] = sum(self.recall_total) / len(
-            self.recall_total)
-        results['average f-score'] = sum(self.fscore_total) / len(
-            self.fscore_total)
-        save_json(results, '/home/downey/PycharmProjects/word_'
-                                'classifacation/data7.json')
+        self.dictionary = self.load_positive_examples(x_true_words)
+        self.dictionary.update(self.get_negative_examples(len(self.dictionary)))
+        return
 
 
 def main():
@@ -251,12 +267,10 @@ def main():
                   'BATS_collective/'
     # dataset_dir = '/home/mattd/projects/tmp/pycharm_project_18/
     # BATS/BATS_collective/'
-    classification = Classification(embedding_dir,
-                                    dataset_dir,
-                                    name_classifier='LR',
-                                    inverse_regularization_strength=1)
-    classification.run()
-    print(embedding_dir)
+    classifier = Classifier(name_classifier='LR',
+                                inverse_regularization_strength=.01)
+
+    classifier.run(embedding_dir, dataset_dir, 10, 'data9')
 
 
 main()
