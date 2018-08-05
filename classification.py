@@ -1,17 +1,38 @@
+import os
+import random
+import json
 import vecto
 import vecto.embeddings
-import os
-import requests
-import random
 import numpy as np
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.linear_model import LogisticRegression
-import json
 import matplotlib.pyplot as plt
-import sklearn
-from sklearn.neural_network import MLPClassifier
-from nltk import word_tokenize
 
+import sklearn
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
+
+
+def save_json(results, path):
+    basedir = os.path.dirname(path)
+    os.makedirs(basedir, exist_ok=True)
+    info = json.dumps(results, ensure_ascii=False, indent=4, sort_keys=False)
+    file = open(path, 'w')
+    file.write(info)
+    file.close()
+
+
+def plot(precision, recall, fscore, testsizes, category):
+    plt.subplot(3, 1, 1)
+    plt.plot(testsizes, precision)
+    plt.title(category)
+    plt.ylabel('precision')
+    plt.subplot(3, 1, 2)
+    plt.plot(testsizes, recall)
+    plt.ylabel('recall')
+    plt.subplot(3, 1, 3)
+    plt.plot(testsizes, fscore)
+    plt.ylabel('f-score')
+    plt.xlabel('test size')
+    plt.show()
 
 class Classification:
     def __init__(self, embedding_dir, dataset_dir, normalize=True,
@@ -24,7 +45,7 @@ class Classification:
                  exclude=True,
                  name_classifier='NN',
                  name_kernel="rbf",
-                 hidden_layer_sizes = ()):
+                 hidden_layer_sizes=()):
         self.hidden_layer_sizes = hidden_layer_sizes
         self.normalize = normalize
         self.ignore_oov = ignore_oov
@@ -41,63 +62,43 @@ class Classification:
         self.precision_total = list()
         self.recall_total = list()
         self.fscore_total = list()
-
+        self.test_words = []
+        self.train_size = 0
+        self.test_size = 0
+        self.dict = {}
         self.embedding_dir = embedding_dir
         self.dataset_dir = dataset_dir
         self.embedding = vecto.embeddings.load_from_dir(self.embedding_dir)
 
     def make_dict(self):
-        dict = {}
-        dict["name_classifier"] = self.name_classifier
-        dict["normalize"] = self.normalize
-        dict["size_cv_test"] = self.size_cv_test
-        dict["ignore_oov"] = self.ignore_oov
-        dict["name_kernel"] = self.name_kernel
-        dict["inverse_regularization_strength"] = \
+        dictionary = dict()
+        dictionary["name_classifier"] = self.name_classifier
+        dictionary["normalize"] = self.normalize
+        dictionary["size_cv_test"] = self.size_cv_test
+        dictionary["ignore_oov"] = self.ignore_oov
+        dictionary["name_kernel"] = self.name_kernel
+        dictionary["inverse_regularization_strength"] = \
             self.inverse_regularization_strength
-        dict["exclude"] = self.exclude
-        dict["do_top5"] = self.do_top5
-        dict["hidden layer size "] = self.hidden_layer_sizes
-        return dict
-
-    def save_json(self, results, path):
-        basedir = os.path.dirname(path)
-        os.makedirs(basedir, exist_ok=True)
-        s = json.dumps(results, ensure_ascii=False, indent=4, sort_keys=False)
-        f = open(path, 'w')
-        f.write(s)
-        f.close()
-
-    def plot(self, precision, recall, fscore, testsizes, category):
-        plt.subplot(3, 1, 1)
-        plt.plot(testsizes, precision)
-        plt.title(category)
-        plt.ylabel('precision')
-        plt.subplot(3, 1, 2)
-        plt.plot(testsizes, recall)
-        plt.ylabel('recall')
-        plt.subplot(3, 1, 3)
-        plt.plot(testsizes, fscore)
-        plt.ylabel('f-score')
-        plt.xlabel('test size')
-        plt.show()
-
+        dictionary["exclude"] = self.exclude
+        dictionary["do_top5"] = self.do_top5
+        dictionary["hidden layer size "] = self.hidden_layer_sizes
+        return dictionary
 
     def get_precision_recall(self, true, pred):
-        X = true - pred
-        tp = 0.0
-        fp = 0.0
-        fn = 0.0
+        difference = true - pred
+        true_positive = 0.0
+        false_positive = 0.0
+        false_negative = 0.0
         for i in range(0, len(true)):
-            if X[i] == 0 and true[i] == 1:
-                tp += 1
-            elif X[i] == 1:
-                fn += 1
-            elif X[i] == -1:
-                fp += 1
-        if tp != 0.0:
-            precision = tp/(tp+fp)
-            recall = tp/(tp+fn)
+            if difference[i] == 0 and true[i] == 1:
+                true_positive += 1
+            elif difference[i] == 1:
+                false_negative += 1
+            elif difference[i] == -1:
+                false_positive += 1
+        if true_positive != 0.0:
+            precision = true_positive/(true_positive+false_positive)
+            recall = true_positive/(true_positive+false_negative)
             fscore = 2 * precision * recall / (precision + recall)
         else:
             precision = 0
@@ -109,7 +110,6 @@ class Classification:
         self.fscore_total.append(fscore)
 
         return precision, recall, fscore
-
 
     def get_results(self, predictions, Y_test):
         results = {}
@@ -124,9 +124,10 @@ class Classification:
             predictions2.append(dictonary)
             if Y_test[i] == predictions[i]:
                 num_correct += 1
-        precision, recall, fscore  = self.get_precision_recall(Y_test,
+        precision, recall, fscore = self.get_precision_recall(Y_test,
                                                                predictions)
-        #pr = precision_recall_fscore_support(Y_test, predictions, average='macro')
+        # pr = precision_recall_fscore_support(Y_test,
+        #  predictions, average='macro')
         results['precision'] = precision
         results['recall'] = recall
         results['fscore'] = fscore
@@ -136,82 +137,75 @@ class Classification:
         results['num_correct'] = num_correct
         return results
 
-
     def get_vectors(self, word_list, testsize):
         words = []
         for word in word_list:
             words.append(word)
-        xtest = list()
-        ytest = list()
+        x_test = list()
+        y_test = list()
         self.test_words = []
-        for i in range(0, testsize):
-            if i % 2 == 0:
-                c = 1
+        for count_1 in range(0, testsize):
+            if count_1 % 2 == 0:
+                odd = 1
             for key in words:
-                if self.dict[key]['class'] == c:
-                    xtest.append(self.dict[key]['embedding'])
-                    ytest.append(self.dict[key]['class'])
+                if self.dict[key]['class'] == odd:
+                    x_test.append(self.dict[key]['embedding'])
+                    y_test.append(self.dict[key]['class'])
                     self.test_words.append(key)
                     words.remove(key)
                     break
-            c = 0
+            odd = 0
 
-        xtrain = list()
-        ytrain = list()
+        x_train = list()
+        y_train = list()
         for key in words:
-            xtrain.append(self.dict[key]['embedding'])
-            ytrain.append(self.dict[key]['class'])
-        xtest = np.array(xtest)
-        ytest = np.array(ytest)
-        xtrain = np.array(xtrain)
-        ytrain = np.array(ytrain)
-        self.train_size = len(ytrain)
-        self.test_size = len(xtest)
-        return xtrain, ytrain, xtest, ytest
+            x_train.append(self.dict[key]['embedding'])
+            y_train.append(self.dict[key]['class'])
+        x_test = np.array(x_test)
+        y_test = np.array(y_test)
+        x_train = np.array(x_train)
+        y_train = np.array(y_train)
+        self.train_size = len(y_train)
+        self.test_size = len(x_test)
+        return x_train, y_train, x_test, y_test
 
     def get_negative_examples(self, length):
-        dict = {}
-        word_site = "http://svnweb.freebsd.org/csrg/share/dict/" \
-                    "words?view=co&content-type=text/plain"
-        response = requests.get(word_site)
-        words = [str(i).split("'")[1] for i in response.content.splitlines()]
-        i = 0
-        while i < length:
+        dictionary = dict()
+        words = self.embedding.vocabulary.lst_words
+        for i in range(0, length):
             rand = random.randint(0, len(words))
-            if self.embedding.has_word(words[rand]):
-                i+=1
-                dict[words[rand]] = {}
-                vector = list(self.embedding.get_vector(str(words[rand])))
-                dict[str(words[rand])]['embedding'] = vector
-                dict[words[rand]]['class'] = 0
-        return dict
+            dictionary[words[rand]] = {}
+            vector = list(self.embedding.get_vector(str(words[rand])))
+            dictionary[str(words[rand])]['embedding'] = vector
+            dictionary[words[rand]]['class'] = 0
+        return dictionary
 
     def load_embedding(self, words):
-        #for word in words:
-        dict = {}
+        # for word in words:
+        dictionary = dict()
         for word in words:
             if self.embedding.has_word(word):
-                dict[word] = {}
+                dictionary[word] = {}
                 vector = list(self.embedding.get_vector(str(word)))
-                dict[str(word)]['embedding'] = vector
-                dict[word]['class'] = 1
-        return dict
+                dictionary[str(word)]['embedding'] = vector
+                dictionary[word]['class'] = 1
+        return dictionary
 
-    def make_data(self, file, category):
-        x_true_words = [(line).split('\t')[1][:-1].split('/')[0] for line in file]
+    def make_data(self, file):
+        x_true_words = [line.split('\t')[1][:-1].split('/')[0] for line in file]
         dict = self.load_embedding(x_true_words)
         dict.update(self.get_negative_examples(len(dict)))
         return dict
 
     def run(self):
-        results = {}
+        results = dict()
         results['embeddings'] = self.embedding.metadata
         results['classifier'] = self.make_dict()
         for file_name in os.listdir(self.dataset_dir):
             category = file_name[:-3]
             print(category)
             file = open(self.dataset_dir + file_name, "r")
-            self.dict = self.make_data(file, category)
+            self.dict = self.make_data(file)
             words = list(self.dict.keys())
 
             random.shuffle(words)
@@ -219,7 +213,7 @@ class Classification:
             if self.name_classifier == 'LR':
                 model_regression = LogisticRegression(
                     class_weight='balanced',
-                    C=1)
+                    C=self.inverse_regularization_strength)
             if self.name_classifier == "SVM":
                 model_regression = sklearn.svm.SVC(
                     C=self.inverse_regularization_strength,
@@ -244,23 +238,24 @@ class Classification:
             self.recall_total)
         results['average f-score'] = sum(self.fscore_total) / len(
             self.fscore_total)
-        self.save_json(results, '/home/downey/PycharmProjects/word_'
-                                'classifacation/data1.json')
+        save_json(results, '/home/downey/PycharmProjects/word_'
+                                'classifacation/data7.json')
+
 
 def main():
-    embedding_dir  ='/home/downey/PycharmProjects/vecto_analogies/embeddings/' \
+    embedding_dir = '/home/downey/PycharmProjects/vecto_analogies/embeddings/' \
                     'structured_linear_cbow_500d'
-    #embedding_dir = '/home/mattd/projects/tmp/pycharm_project_18/embeddings/
+    # embedding_dir = '/home/mattd/projects/tmp/pycharm_project_18/embeddings/
     # structured_linear_cbow_500d'
     dataset_dir = '/home/downey/PycharmProjects/vecto_analogies/BATS/' \
                   'BATS_collective/'
-    #dataset_dir = '/home/mattd/projects/tmp/pycharm_project_18/
+    # dataset_dir = '/home/mattd/projects/tmp/pycharm_project_18/
     # BATS/BATS_collective/'
     classification = Classification(embedding_dir,
                                     dataset_dir,
-                                    name_classifier = 'LR')
+                                    name_classifier='LR',
+                                    inverse_regularization_strength=1)
     classification.run()
-
     print(embedding_dir)
 
 
