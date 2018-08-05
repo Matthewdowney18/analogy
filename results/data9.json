@@ -1,0 +1,2440 @@
+{
+    "embeddings": {
+        "vecto_version": "0.1.6",
+        "_class": "vecto.embeddings.dense.WordEmbeddingsDense",
+        "dimensions": 500,
+        "description": "Bound linear context (aka structured linear context)",
+        "epoch": 5,
+        "negative_size": 2,
+        "model": "cbow",
+        "out_type": "ns",
+        "subword": "none",
+        "vocabulary": {
+            "cnt_words": 272062,
+            "corpus": {
+                "bib": {
+                    "title": "{Investigating {{Different Syntactic Context Types}} and {{Context Representations}} for {{Learning Word Embeddings}}}",
+                    "url": "{http://www.aclweb.org/anthology/D17-1256}",
+                    "publisher": "",
+                    "year": "2017"
+                }
+            },
+            "min_frequency": 100
+        },
+        "window": 2
+    },
+    "classifier": {
+        "name_classifier": "LR",
+        "normalize": true,
+        "size_cv_test": 1,
+        "ignore_oov": true,
+        "name_kernel": "rbf",
+        "inverse_regularization_strength": 0.01,
+        "exclude": true,
+        "do_top5": true,
+        "hidden layer size ": []
+    },
+    "D02 [un+adj_reg].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "unfinished",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "non-obligatory",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "unhealthy",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "millán",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "unpopular",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "admin-only",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "unfortunate",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "talai",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "unintended",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "canuto",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I02 [noun - plural_irreg].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "formulae",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "novica",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "properties",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "pictured",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "analyses",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "gujarati-language",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "societies",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kautokeino",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "categories",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "granddaughter",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "L10 [antonyms - binary].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 86,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "exhale",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "jpatokal",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "static",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "novas",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "back",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "swinburne",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "reverse",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kalonymus",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "before",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "novella",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I08 [verb_Ving - 3pSg].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "remains",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "orange-breasted",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "adds",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "colmán",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "suggests",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "begins",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "thanks",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "donyell",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "performs",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tripos",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "L01 [hypernyms - animals].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 10,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "raptor",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "stood",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "fowl",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "grosset",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "dinosaur",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "commander3",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "insect",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "palairet",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "primate",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kyriaki",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "D07 [verb+able_reg].": {
+        "precision": 0.625,
+        "recall": 1.0,
+        "fscore": 0.7692307692307693,
+        "train_size": 72,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "adorable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sparklism",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "imaginable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "w5",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "predictable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sph",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "survivable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "hinchcliffe",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "considerable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "stiffen",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 7
+    },
+    "E05 [name - occupation].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 32,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "prophet",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "nitty-gritty",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "naturalist",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "gridlock",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "actress",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "groupings",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "philosopher",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bonaire",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "novelist",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tirthankara",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "D05 [adj+ness_reg].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 48,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "niceness",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "co-existence",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "reasonableness",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "olmec",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "preparedness",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "hmcs",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "cheapness",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "summarising",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "attractiveness",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "foxyorange",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "I03 [adj - comparative].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 72,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "cheaper",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "oberkommando",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "nastier",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "salsb",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "ruder",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kathryn",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "rockier",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "1996",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "hotter",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "télévision",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "L02 [hypernyms - misc].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 52,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "band",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "hermeneutics",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "card",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "pyjamas",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "tableware",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "horeb",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "journal",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "neeli",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "walk",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "optician",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "L09 [antonyms - gradable].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 86,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "empty",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "erythropus",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "dirty",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "denucci",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "pale",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "mission-critical",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "colorless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "0_o",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "sour",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "year_start",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "E07 [animal - sound].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 46,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "roar",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "rzeczyca",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "ribbit",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kayaking",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "hiss",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kml",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "bark",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kohana",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "oink",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "ameland",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I07 [verb_inf - Ved].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "included",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "+0.0",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "became",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "danaman5",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "attended",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "diagne",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "decided",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "guran",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "located",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tropang",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "L05 [meronyms - member].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 76,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "orchestra",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "uua",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "senate",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "hem",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "forest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "990s",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "constellation",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sohc",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "police",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "warlords",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "I06 [verb_inf - Ving].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "establishing",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "antone",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "becoming",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "strzelin",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "creating",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "karpis",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "believing",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sum_i",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "telling",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "contextualizing",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I09 [verb_Ving - Ved].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "became",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kieu",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "established",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "faq",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "understood",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "mattila",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "improved",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "area_blank1_title",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "applied",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "remarques",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "L07 [synonyms - intensity].": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "fscore": 0.8000000000000002,
+        "train_size": 80,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "ingenious",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "archaic",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "exciting",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "columbella",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "immediately",
+                "predicted class": "0",
+                "actual class": "1"
+            },
+            {
+                "word": "near-earth",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "hot",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "100m",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "torment",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "naganuma",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "D01 [noun+less_reg].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 70,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "lifeless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bootle",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "windowless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "demonology",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "goalless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kuch",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "remorseless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "strozzi",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "defenceless",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sosialis",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "I01 [noun - plural_reg].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "departments",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "0-6-0st",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "weeks",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "mulhouse",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "websites",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "literature-related",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "streets",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "entrant",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "roads",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kingsgrove",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I04 [adj - superlative].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 56,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "hardiest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "earwax",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "hottest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "chinese-english",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "tiniest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "fiscally",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "fiercest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "notabillity",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "harshest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "greenshields",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "D08 [verb+er_irreg].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "speaker",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "yiğit",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "deliverer",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "1934-1935",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "teller",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "rondeaux",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "subscriber",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "huntingtower",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "interpreter",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": ".09",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "D09 [verb+tion_irreg].": {
+        "precision": 0.625,
+        "recall": 1.0,
+        "fscore": 0.7692307692307693,
+        "train_size": 84,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "maximization",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "4:57",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "deprivation",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "laigin",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "starvation",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "rounds",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "preparation",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "qic",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "organization",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bowers",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 7
+    },
+    "E01 [country - capital].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "guinea",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "virens",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "iraq",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "lysosomal",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "australia",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "awadewit",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "bangladesh",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "qmc",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "japan",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "witkacy",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "E02 [country - language].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 36,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "berber",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sinners",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "moldovan",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tsubomi",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "english",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "phantomsteve",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "dutch",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "protein-coding",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "french",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "takita",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "D06 [re+verb_reg].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 80,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "redefine",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "chimed",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "redeem",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "declan",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "reconsider",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "girl",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "retell",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "rosaura",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "reassess",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "wąsosz",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "E03 [UK_city - county].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 50,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "somerset",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "sieg",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "devon",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "graupner",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "herefordshire",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "teito",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "worcestershire",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "dinotopia",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "norfolk",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "peripheral",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "D03 [adj+ly_reg].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "digitally",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kfrc",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "immediately",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "humiliation",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "virtually",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "forbade",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "internally",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "euroseries",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "critically",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bobadilla",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "L03 [hyponyms - misc].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "camcorder",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "delegations",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "divan",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "songkran",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "choker",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "xenophobe",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "spring",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "brāhmī",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "rake",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "girlie",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "E06 [animal - young].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 28,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "piglet",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tichenor",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "kid",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bransford",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "calf",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "pitbulls",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "grub",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "xenopol",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "lamb",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "canalside",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "E10 [male - female].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 86,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "mother",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "heartbeats",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "madam",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "ranna",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "superwoman",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "bio-diesel",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "mommy",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "coppersmith",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "empress",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "armadillo",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "E04 [name - nationality].": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "fscore": 0.6666666666666666,
+        "train_size": 20,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "russian",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "cánovas",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "scottish",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "pledging",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "italian",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "fitzmaurice",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "german",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "ezzo",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "chinese",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "gurjara",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 5
+    },
+    "I10 [verb_3pSg - Ved].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "related",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "diffeomorphism",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "asked",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "germanium",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "married",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "grade13",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "lost",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "trud",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "represented",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "high-efficiency",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "L08 [synonyms - exact].": {
+        "precision": 0.625,
+        "recall": 1.0,
+        "fscore": 0.7692307692307693,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "repair",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "maternity",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "outdated",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "impurity",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "gauze",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "combines",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "partner",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "force-feeding",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "arranged",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "zemin",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 7
+    },
+    "E08 [animal - shelter].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 30,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "nest",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "madla",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "sea",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "rayne",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "doghouse",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "trueblood",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "stable",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "1983",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "barn",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "ente",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "L06 [meronyms - part].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 84,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "pence",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "foxconn",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "pane",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "tez",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "extension",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "samy",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "movement",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "1986/1987",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "altar",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "shafts",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "I05 [verb_inf - 3pSg].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 90,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "believes",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "kitajima",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "enjoys",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "characterisations",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "enables",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "yurukov",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "promotes",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "markbreit",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "happens",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "recruiters",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "D04 [over+adj_reg].": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "fscore": 0.9090909090909091,
+        "train_size": 56,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "overused",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "merca",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "overcharged",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "titán",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "overthrown",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "broomball",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "overturned",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "hillesum",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "overprotective",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "pleas",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 9
+    },
+    "E09 [things - color].": {
+        "precision": 0.625,
+        "recall": 1.0,
+        "fscore": 0.7692307692307693,
+        "train_size": 6,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "red",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "importance/significance",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "orange",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "grille",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "blue",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "corporative",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "green",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "zeeshan",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "yellow",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "cajole",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 7
+    },
+    "D10 [verb+ment_irreg].": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fscore": 1.0,
+        "train_size": 88,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "enrollment",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "lps",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "enjoyment",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "dhoti",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "announcement",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "gamow",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "encouragement",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "preso",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "accomplishment",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "h.w.",
+                "predicted class": "0",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 10
+    },
+    "L04 [meronyms - substance].": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "fscore": 0.8333333333333333,
+        "train_size": 60,
+        "test_size": 10,
+        "predictions": [
+            {
+                "word": "medicine",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "returning",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "metal",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "auriga",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "silicon",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "13,000",
+                "predicted class": "1",
+                "actual class": "0"
+            },
+            {
+                "word": "fabric",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "ivon",
+                "predicted class": "0",
+                "actual class": "0"
+            },
+            {
+                "word": "gas",
+                "predicted class": "1",
+                "actual class": "1"
+            },
+            {
+                "word": "laryngeal",
+                "predicted class": "1",
+                "actual class": "0"
+            }
+        ],
+        "num_correct": 8
+    },
+    "average precision": 0.8450000000000001,
+    "average recall": 0.9949999999999999,
+    "average f-score": 0.9071503496503496
+}

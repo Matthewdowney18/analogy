@@ -1,0 +1,1163 @@
+{
+    "embeddings": {
+        "vecto_version": "0.1.6",
+        "_class": "vecto.embeddings.dense.WordEmbeddingsDense",
+        "dimensions": 500,
+        "description": "Bound linear context (aka structured linear context)",
+        "epoch": 5,
+        "negative_size": 2,
+        "model": "cbow",
+        "out_type": "ns",
+        "subword": "none",
+        "vocabulary": {
+            "cnt_words": 272062,
+            "corpus": {
+                "bib": {
+                    "title": "{Investigating {{Different Syntactic Context Types}} and {{Context Representations}} for {{Learning Word Embeddings}}}",
+                    "url": "{http://www.aclweb.org/anthology/D17-1256}",
+                    "publisher": "",
+                    "year": "2017"
+                }
+            },
+            "min_frequency": 100
+        },
+        "window": 2,
+        "normalized": true
+    },
+    "test_setup": {
+        "name_classifier": "NN",
+        "normalize": true,
+        "size_cv_test": 1,
+        "ignore_oov": true,
+        "name_kernel": "rbf",
+        "inverse_regularization_strength": 1,
+        "exclude": true,
+        "do_top5": true,
+        "hidden layer size ": []
+    },
+    "D02 [un+adj_reg].": [
+        {
+            "question verbose": "What is to certain ",
+            "b": "certain",
+            "expected answer": "uncertain",
+            "predictions": [
+                {
+                    "score": 0.4411523504761644,
+                    "answer": "unreasonable",
+                    "hit": false
+                },
+                {
+                    "score": 0.4363060851510057,
+                    "answer": "predetermined",
+                    "hit": false
+                },
+                {
+                    "score": 0.4232199610421295,
+                    "answer": "undesirable",
+                    "hit": false
+                },
+                {
+                    "score": 0.4166072738358085,
+                    "answer": "unavoidable",
+                    "hit": false
+                },
+                {
+                    "score": 0.41410781895619,
+                    "answer": "unhealthy",
+                    "hit": false
+                },
+                {
+                    "score": 0.4093445051174429,
+                    "answer": "distressing",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "certain"
+            ],
+            "rank": 382,
+            "landing_b": true,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.6538177579641342
+        },
+        {
+            "question verbose": "What is to available ",
+            "b": "available",
+            "expected answer": "unavailable",
+            "predictions": [
+                {
+                    "score": 0.6114112142950984,
+                    "answer": "unavailable",
+                    "hit": true
+                },
+                {
+                    "score": 0.4989833005073472,
+                    "answer": "viewable",
+                    "hit": false
+                },
+                {
+                    "score": 0.46997923710401446,
+                    "answer": "possible",
+                    "hit": false
+                },
+                {
+                    "score": 0.4555272515007358,
+                    "answer": "usable",
+                    "hit": false
+                },
+                {
+                    "score": 0.45450522081207984,
+                    "answer": "provided",
+                    "hit": false
+                },
+                {
+                    "score": 0.453420056631681,
+                    "answer": "unusable",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "available"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.8064400851726532
+        },
+        {
+            "question verbose": "What is to changed ",
+            "b": "changed",
+            "expected answer": "unchanged",
+            "predictions": [
+                {
+                    "score": 0.5197917029629039,
+                    "answer": "altered",
+                    "hit": false
+                },
+                {
+                    "score": 0.4121150864671265,
+                    "answer": "changing",
+                    "hit": false
+                },
+                {
+                    "score": 0.4088462413704432,
+                    "answer": "switched",
+                    "hit": false
+                },
+                {
+                    "score": 0.38832674512368626,
+                    "answer": "unclear",
+                    "hit": false
+                },
+                {
+                    "score": 0.3751292333873179,
+                    "answer": "reinstated",
+                    "hit": false
+                },
+                {
+                    "score": 0.3611130297630665,
+                    "answer": "unchanged",
+                    "hit": true
+                }
+            ],
+            "set_exclude": [
+                "changed"
+            ],
+            "rank": 5,
+            "landing_b": false,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6869098842144012
+        },
+        {
+            "question verbose": "What is to employed ",
+            "b": "employed",
+            "expected answer": "unemployed",
+            "predictions": [
+                {
+                    "score": 0.40093563636882135,
+                    "answer": "engaged",
+                    "hit": false
+                },
+                {
+                    "score": 0.3981489524373,
+                    "answer": "detained",
+                    "hit": false
+                },
+                {
+                    "score": 0.39648259773727984,
+                    "answer": "assigned",
+                    "hit": false
+                },
+                {
+                    "score": 0.37714459555058655,
+                    "answer": "incarcerated",
+                    "hit": false
+                },
+                {
+                    "score": 0.3746930699264936,
+                    "answer": "hospitalized",
+                    "hit": false
+                },
+                {
+                    "score": 0.36597959685186254,
+                    "answer": "hospitalised",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "employed"
+            ],
+            "rank": 8,
+            "landing_b": true,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.6958426386117935
+        },
+        {
+            "question verbose": "What is to published ",
+            "b": "published",
+            "expected answer": "unpublished",
+            "predictions": [
+                {
+                    "score": 0.4475724991399891,
+                    "answer": "unpublished",
+                    "hit": true
+                },
+                {
+                    "score": 0.39458705756538076,
+                    "answer": "issued",
+                    "hit": false
+                },
+                {
+                    "score": 0.3917883004671006,
+                    "answer": "released",
+                    "hit": false
+                },
+                {
+                    "score": 0.38273086830165054,
+                    "answer": "presented",
+                    "hit": false
+                },
+                {
+                    "score": 0.38219001235654926,
+                    "answer": "dramatised",
+                    "hit": false
+                },
+                {
+                    "score": 0.3726952001234381,
+                    "answer": "printed",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "published"
+            ],
+            "rank": 0,
+            "landing_b": false,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.7319776564836502
+        },
+        {
+            "score": 0.4
+        }
+    ],
+    "I02 [noun - plural_irreg].": [
+        {
+            "question verbose": "What is to loss ",
+            "b": "loss",
+            "expected answer": "losses",
+            "predictions": [
+                {
+                    "score": 0.5215288148324435,
+                    "answer": "losses",
+                    "hit": true
+                },
+                {
+                    "score": 0.39873813032056454,
+                    "answer": "victories",
+                    "hit": false
+                },
+                {
+                    "score": 0.3455203480955196,
+                    "answer": "successes",
+                    "hit": false
+                },
+                {
+                    "score": 0.3323621886176401,
+                    "answer": "failures",
+                    "hit": false
+                },
+                {
+                    "score": 0.33025646918302365,
+                    "answer": "deficits",
+                    "hit": false
+                },
+                {
+                    "score": 0.32126532078174735,
+                    "answer": "casualties",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "loss"
+            ],
+            "rank": 0,
+            "landing_b": false,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.8132143914699554
+        },
+        {
+            "question verbose": "What is to century ",
+            "b": "century",
+            "expected answer": "centuries",
+            "predictions": [
+                {
+                    "score": 0.463765340192682,
+                    "answer": "centuries",
+                    "hit": true
+                },
+                {
+                    "score": 0.41578922176476063,
+                    "answer": "congresses",
+                    "hit": false
+                },
+                {
+                    "score": 0.4094203164935912,
+                    "answer": "consortia",
+                    "hit": false
+                },
+                {
+                    "score": 0.4025708909528763,
+                    "answer": "accreditors",
+                    "hit": false
+                },
+                {
+                    "score": 0.3972777969769673,
+                    "answer": "madrasas",
+                    "hit": false
+                },
+                {
+                    "score": 0.39724352184993983,
+                    "answer": "sinologists",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "century"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7978585064411163
+        },
+        {
+            "question verbose": "What is to analysis ",
+            "b": "analysis",
+            "expected answer": "analyses",
+            "predictions": [
+                {
+                    "score": 0.5356863209549642,
+                    "answer": "analyses",
+                    "hit": true
+                },
+                {
+                    "score": 0.5113161524989194,
+                    "answer": "evaluations",
+                    "hit": false
+                },
+                {
+                    "score": 0.47756314298992,
+                    "answer": "calculations",
+                    "hit": false
+                },
+                {
+                    "score": 0.463557128077634,
+                    "answer": "evaluation",
+                    "hit": false
+                },
+                {
+                    "score": 0.45663017138329176,
+                    "answer": "interpretation",
+                    "hit": false
+                },
+                {
+                    "score": 0.451797704859718,
+                    "answer": "interpretations",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "analysis"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.8035689890384674
+        },
+        {
+            "question verbose": "What is to safety ",
+            "b": "safety",
+            "expected answer": "safeties",
+            "predictions": [
+                {
+                    "score": 0.331205541246507,
+                    "answer": "stability",
+                    "hit": false
+                },
+                {
+                    "score": 0.29822569520907777,
+                    "answer": "sustainability",
+                    "hit": false
+                },
+                {
+                    "score": 0.2923073617210504,
+                    "answer": "facilities",
+                    "hit": false
+                },
+                {
+                    "score": 0.2914728567056817,
+                    "answer": "stewardship",
+                    "hit": false
+                },
+                {
+                    "score": 0.2817282395145586,
+                    "answer": "competitiveness",
+                    "hit": false
+                },
+                {
+                    "score": 0.2782176943225168,
+                    "answer": "infrastructures",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "safety"
+            ],
+            "rank": 560,
+            "landing_b": false,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6638253331184387
+        },
+        {
+            "question verbose": "What is to life ",
+            "b": "life",
+            "expected answer": "lives",
+            "predictions": [
+                {
+                    "score": 0.43615493730573734,
+                    "answer": "lives",
+                    "hit": true
+                },
+                {
+                    "score": 0.3569318019526674,
+                    "answer": "activities",
+                    "hit": false
+                },
+                {
+                    "score": 0.3542980856832365,
+                    "answer": "relationships",
+                    "hit": false
+                },
+                {
+                    "score": 0.3362687509887329,
+                    "answer": "endeavors",
+                    "hit": false
+                },
+                {
+                    "score": 0.33588782077000184,
+                    "answer": "careers",
+                    "hit": false
+                },
+                {
+                    "score": 0.33203126218172685,
+                    "answer": "friendships",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "life"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7383261770009995
+        },
+        {
+            "score": 0.8
+        }
+    ],
+    "L10 [antonyms - binary].": [
+        {
+            "question verbose": "What is to uphill ",
+            "b": "uphill",
+            "expected answer": "downhill",
+            "predictions": [
+                {
+                    "score": 0.6080597222860935,
+                    "answer": "southwestward",
+                    "hit": false
+                },
+                {
+                    "score": 0.6037603834314529,
+                    "answer": "up-river",
+                    "hit": false
+                },
+                {
+                    "score": 0.5822368282940351,
+                    "answer": "anti-clockwise",
+                    "hit": false
+                },
+                {
+                    "score": 0.5761362862280616,
+                    "answer": "southeastward",
+                    "hit": false
+                },
+                {
+                    "score": 0.574424456237727,
+                    "answer": "northwestward",
+                    "hit": false
+                },
+                {
+                    "score": 0.5669301668094633,
+                    "answer": "anticlockwise",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "uphill"
+            ],
+            "rank": 52,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7925183176994324
+        },
+        {
+            "question verbose": "What is to submerge ",
+            "b": "submerge",
+            "expected answer": "emerge",
+            "predictions": [
+                {
+                    "score": 0.6090785004805522,
+                    "answer": "re-enter",
+                    "hit": false
+                },
+                {
+                    "score": 0.6043544078010833,
+                    "answer": "reemerge",
+                    "hit": false
+                },
+                {
+                    "score": 0.6017007156781701,
+                    "answer": "reenter",
+                    "hit": false
+                },
+                {
+                    "score": 0.598480544148069,
+                    "answer": "re-locate",
+                    "hit": false
+                },
+                {
+                    "score": 0.5922083077749741,
+                    "answer": "recede",
+                    "hit": false
+                },
+                {
+                    "score": 0.5774295938842201,
+                    "answer": "inaugurate",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "submerge"
+            ],
+            "rank": 635,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7127535343170166
+        },
+        {
+            "question verbose": "What is to off ",
+            "b": "off",
+            "expected answer": "on",
+            "predictions": [
+                {
+                    "score": 0.4574253476100506,
+                    "answer": "down",
+                    "hit": false
+                },
+                {
+                    "score": 0.4290255289397397,
+                    "answer": "away",
+                    "hit": false
+                },
+                {
+                    "score": 0.4065904237898102,
+                    "answer": "offs",
+                    "hit": false
+                },
+                {
+                    "score": 0.40122681725497206,
+                    "answer": "ashore",
+                    "hit": false
+                },
+                {
+                    "score": 0.38946095710262896,
+                    "answer": "north-northwestward",
+                    "hit": false
+                },
+                {
+                    "score": 0.38486355156346963,
+                    "answer": "off-course",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "off"
+            ],
+            "rank": 10375,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6697623133659363
+        },
+        {
+            "question verbose": "What is to internal ",
+            "b": "internal",
+            "expected answer": "external",
+            "predictions": [
+                {
+                    "score": 0.3464372379699678,
+                    "answer": "external",
+                    "hit": true
+                },
+                {
+                    "score": 0.33820760720704435,
+                    "answer": "inbound",
+                    "hit": false
+                },
+                {
+                    "score": 0.338198090006727,
+                    "answer": "inward",
+                    "hit": false
+                },
+                {
+                    "score": 0.33043809518229317,
+                    "answer": "outbound",
+                    "hit": false
+                },
+                {
+                    "score": 0.3302151974521095,
+                    "answer": "incoming",
+                    "hit": false
+                },
+                {
+                    "score": 0.3227430298737371,
+                    "answer": "onshore",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "internal"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7757992446422577
+        },
+        {
+            "question verbose": "What is to inverse ",
+            "b": "inverse",
+            "expected answer": "reverse",
+            "predictions": [
+                {
+                    "score": 0.3734399884924594,
+                    "answer": "counterclockwise",
+                    "hit": false
+                },
+                {
+                    "score": 0.37273270166429534,
+                    "answer": "anticlockwise",
+                    "hit": false
+                },
+                {
+                    "score": 0.36712666816419637,
+                    "answer": "cdot",
+                    "hit": false
+                },
+                {
+                    "score": 0.36629618678221054,
+                    "answer": "counter-clockwise",
+                    "hit": false
+                },
+                {
+                    "score": 0.36252909665887467,
+                    "answer": "boldsymbol",
+                    "hit": false
+                },
+                {
+                    "score": 0.35862330612283194,
+                    "answer": "rho",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "inverse"
+            ],
+            "rank": 482,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6689045578241348
+        },
+        {
+            "score": 0.2
+        }
+    ],
+    "I08 [verb_Ving - 3pSg].": [
+        {
+            "question verbose": "What is to explaining ",
+            "b": "explaining",
+            "expected answer": "explains",
+            "predictions": [
+                {
+                    "score": 0.5902657685745573,
+                    "answer": "explains",
+                    "hit": true
+                },
+                {
+                    "score": 0.5292973181552034,
+                    "answer": "stating",
+                    "hit": false
+                },
+                {
+                    "score": 0.4756766214089835,
+                    "answer": "explained",
+                    "hit": false
+                },
+                {
+                    "score": 0.4609008761061275,
+                    "answer": "noting",
+                    "hit": false
+                },
+                {
+                    "score": 0.4523008239066435,
+                    "answer": "elaborates",
+                    "hit": false
+                },
+                {
+                    "score": 0.44462909860940497,
+                    "answer": "clarifies",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "explaining"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7974160015583038
+        },
+        {
+            "question verbose": "What is to teaching ",
+            "b": "teaching",
+            "expected answer": "teaches",
+            "predictions": [
+                {
+                    "score": 0.4712195573590815,
+                    "answer": "teaches",
+                    "hit": true
+                },
+                {
+                    "score": 0.3164522448118131,
+                    "answer": "taught",
+                    "hit": false
+                },
+                {
+                    "score": 0.28504001854975974,
+                    "answer": "teach",
+                    "hit": true
+                },
+                {
+                    "score": 0.2692574809841344,
+                    "answer": "conceives",
+                    "hit": false
+                },
+                {
+                    "score": 0.26769962868588215,
+                    "answer": "excels",
+                    "hit": false
+                },
+                {
+                    "score": 0.26596048039462206,
+                    "answer": "preaches",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "teaching"
+            ],
+            "rank": 0,
+            "landing_b": false,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.7470829039812088
+        },
+        {
+            "question verbose": "What is to publishing ",
+            "b": "publishing",
+            "expected answer": "publishes",
+            "predictions": [
+                {
+                    "score": 0.3605340372820591,
+                    "answer": "publishes",
+                    "hit": true
+                },
+                {
+                    "score": 0.2789216452539307,
+                    "answer": "writes",
+                    "hit": false
+                },
+                {
+                    "score": 0.26381279559890514,
+                    "answer": "discloses",
+                    "hit": false
+                },
+                {
+                    "score": 0.24081921979466053,
+                    "answer": "unifies",
+                    "hit": false
+                },
+                {
+                    "score": 0.23848814871310028,
+                    "answer": "appears",
+                    "hit": false
+                },
+                {
+                    "score": 0.2379006916568435,
+                    "answer": "contends",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "publishing"
+            ],
+            "rank": 0,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7074702382087708
+        },
+        {
+            "question verbose": "What is to advertising ",
+            "b": "advertising",
+            "expected answer": "advertises",
+            "predictions": [
+                {
+                    "score": 0.29835334829478777,
+                    "answer": "advertises",
+                    "hit": true
+                },
+                {
+                    "score": 0.23998686067750236,
+                    "answer": "applies",
+                    "hit": false
+                },
+                {
+                    "score": 0.2266245209561401,
+                    "answer": "qualifies",
+                    "hit": false
+                },
+                {
+                    "score": 0.22057622334924318,
+                    "answer": "fails",
+                    "hit": false
+                },
+                {
+                    "score": 0.21566667096569372,
+                    "answer": "fwiw",
+                    "hit": false
+                },
+                {
+                    "score": 0.21561754462108182,
+                    "answer": "caters",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "advertising"
+            ],
+            "rank": 0,
+            "landing_b": false,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.682753786444664
+        },
+        {
+            "question verbose": "What is to representing ",
+            "b": "representing",
+            "expected answer": "represents",
+            "predictions": [
+                {
+                    "score": 0.6123719991381065,
+                    "answer": "represents",
+                    "hit": true
+                },
+                {
+                    "score": 0.37596381526321193,
+                    "answer": "symbolizes",
+                    "hit": false
+                },
+                {
+                    "score": 0.3462958184190225,
+                    "answer": "symbolises",
+                    "hit": false
+                },
+                {
+                    "score": 0.3388112391134735,
+                    "answer": "recognises",
+                    "hit": false
+                },
+                {
+                    "score": 0.3352071887643313,
+                    "answer": "represented",
+                    "hit": false
+                },
+                {
+                    "score": 0.3336410450741479,
+                    "answer": "depicts",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "representing"
+            ],
+            "rank": 0,
+            "landing_b": false,
+            "landing_b_prime": true,
+            "similarity b to b_prime cosine": 0.8196058869361877
+        },
+        {
+            "score": 1.0
+        }
+    ],
+    "L01 [hypernyms - animals].": [
+        {
+            "question verbose": "What is to deer ",
+            "b": "deer",
+            "expected answer": "bovid",
+            "predictions": [
+                {
+                    "score": 0.39016808150226967,
+                    "answer": "rodent",
+                    "hit": false
+                },
+                {
+                    "score": 0.38299029836134363,
+                    "answer": "bird",
+                    "hit": false
+                },
+                {
+                    "score": 0.37900909585013454,
+                    "answer": "rabbits",
+                    "hit": false
+                },
+                {
+                    "score": 0.37113530131285566,
+                    "answer": "fowl",
+                    "hit": false
+                },
+                {
+                    "score": 0.3666749414921253,
+                    "answer": "waterfowl",
+                    "hit": false
+                },
+                {
+                    "score": 0.3656849309557799,
+                    "answer": "rabbit",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "deer"
+            ],
+            "rank": 9636,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.49946247320622206
+        },
+        {
+            "question verbose": "What is to chimpanzee ",
+            "b": "chimpanzee",
+            "expected answer": "primate",
+            "predictions": [
+                {
+                    "score": 0.4708386778685909,
+                    "answer": "rodent",
+                    "hit": false
+                },
+                {
+                    "score": 0.4656666559597022,
+                    "answer": "dinosaur",
+                    "hit": false
+                },
+                {
+                    "score": 0.461871091882893,
+                    "answer": "orangutan",
+                    "hit": false
+                },
+                {
+                    "score": 0.44223265044018034,
+                    "answer": "feline",
+                    "hit": false
+                },
+                {
+                    "score": 0.4408334876643314,
+                    "answer": "reptile",
+                    "hit": false
+                },
+                {
+                    "score": 0.42750793509972296,
+                    "answer": "hominid",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "chimpanzee"
+            ],
+            "rank": 36,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6856815665960312
+        },
+        {
+            "question verbose": "What is to mouse ",
+            "b": "mouse",
+            "expected answer": "rodent",
+            "predictions": [
+                {
+                    "score": 0.4203115394431976,
+                    "answer": "mice",
+                    "hit": false
+                },
+                {
+                    "score": 0.3999284991705083,
+                    "answer": "frog",
+                    "hit": false
+                },
+                {
+                    "score": 0.39515158868556644,
+                    "answer": "rat",
+                    "hit": false
+                },
+                {
+                    "score": 0.38632818849103523,
+                    "answer": "rabbit",
+                    "hit": false
+                },
+                {
+                    "score": 0.37525023318419626,
+                    "answer": "rodent",
+                    "hit": true
+                },
+                {
+                    "score": 0.36394070236923337,
+                    "answer": "squirrel",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "mouse"
+            ],
+            "rank": 4,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7013607919216156
+        },
+        {
+            "question verbose": "What is to cockroach ",
+            "b": "cockroach",
+            "expected answer": "insect",
+            "predictions": [
+                {
+                    "score": 0.4961134764426255,
+                    "answer": "rodent",
+                    "hit": false
+                },
+                {
+                    "score": 0.46718817288317666,
+                    "answer": "baboon",
+                    "hit": false
+                },
+                {
+                    "score": 0.4619758069064875,
+                    "answer": "feline",
+                    "hit": false
+                },
+                {
+                    "score": 0.4534972043358913,
+                    "answer": "reptile",
+                    "hit": false
+                },
+                {
+                    "score": 0.44191553618461615,
+                    "answer": "fowl",
+                    "hit": false
+                },
+                {
+                    "score": 0.4359385992281459,
+                    "answer": "hyena",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "cockroach"
+            ],
+            "rank": 7,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.7257555723190308
+        },
+        {
+            "question verbose": "What is to human ",
+            "b": "human",
+            "expected answer": "primate",
+            "predictions": [
+                {
+                    "score": 0.4640301409793675,
+                    "answer": "canine",
+                    "hit": false
+                },
+                {
+                    "score": 0.4405547180497985,
+                    "answer": "feline",
+                    "hit": false
+                },
+                {
+                    "score": 0.4192624723102003,
+                    "answer": "animal",
+                    "hit": false
+                },
+                {
+                    "score": 0.400562548186927,
+                    "answer": "rodent",
+                    "hit": false
+                },
+                {
+                    "score": 0.40050576618509753,
+                    "answer": "avian",
+                    "hit": false
+                },
+                {
+                    "score": 0.3824342685210832,
+                    "answer": "humanoid",
+                    "hit": false
+                }
+            ],
+            "set_exclude": [
+                "human"
+            ],
+            "rank": 49,
+            "landing_b": true,
+            "landing_b_prime": false,
+            "similarity b to b_prime cosine": 0.6331191658973694
+        },
+        {
+            "score": 0.0
+        }
+    ]
+}
