@@ -68,6 +68,8 @@ class Classifier:
         self.name_classifier = name_classifier
         self.name_kernel = name_kernel
 
+        self.neg_accuracy_total = list()
+        self.pos_accuracy_total = list()
         self.precision_total = list()
         self.recall_total = list()
         self.fscore_total = list()
@@ -87,8 +89,10 @@ class Classifier:
                 num_correct += 1
         precision, recall, fscore = self.get_precision_recall(y_test,
                                                               predictions)
-        # pr = precision_recall_fscore_support(Y_test,
-        #  predictions, average='macro')
+        neg_accuracy, pos_accuracy = self.get_accuracy(y_test,
+                                                       predictions)
+        results['neg_accuracy'] = neg_accuracy
+        results['pos_accuracy'] = pos_accuracy
         results['precision'] = precision
         results['recall'] = recall
         results['fscore'] = fscore
@@ -111,6 +115,21 @@ class Classifier:
         dictionary["do_top5"] = self.do_top5
         dictionary["hidden layer size "] = self.hidden_layer_sizes
         return dictionary
+
+    def get_accuracy(self, true, pred):
+        neg_examples = list()
+        pos_examples = list()
+        for i in range(0, len(pred)):
+            if true[i] == 0:
+                neg_examples.append(pred[i])
+            else:
+                pos_examples.append(pred[i])
+
+        neg_accuracy = float(neg_examples.count(0)) / len(neg_examples)
+        pos_accuracy = float(pos_examples.count(1)) / len(pos_examples)
+        self.neg_accuracy_total.append(neg_accuracy)
+        self.pos_accuracy_total.append(pos_accuracy)
+        return neg_accuracy, pos_accuracy
 
     def get_precision_recall(self, true, pred):
         difference = true - pred
@@ -178,13 +197,19 @@ class Classifier:
             model_regression.fit(x_train, y_train)
             prediction = model_regression.predict(x_test)
             results[category] = self.get_results(prediction, y_test, data)
+        results['average negative accuracy'] = sum(self.neg_accuracy_total) / \
+                                               len(
+                                                   self.neg_accuracy_total)
+        results['average positive accuracy'] = sum(self.pos_accuracy_total) / \
+                                               len(
+                                                   self.pos_accuracy_total)
         results['average precision'] = sum(self.precision_total) / len(
             self.precision_total)
         results['average recall'] = sum(self.recall_total) / len(
             self.recall_total)
         results['average f-score'] = sum(self.fscore_total) / len(
             self.fscore_total)
-        save_json(results, '/home/downey/PycharmProjects/word_'
+        save_json(results, '/home/mattd/Pycharm/word_'
                            'classifacation/'+ result_file_name +'.json')
 
 
@@ -259,18 +284,17 @@ class Data:
 
 
 def main():
-    embedding_dir = '/home/downey/PycharmProjects/vecto_analogies/embeddings/' \
+    embedding_dir = '/home/mattd/Pycharm/vecto_analogies/embeddings/' \
                     'structured_linear_cbow_500d'
     # embedding_dir = '/home/mattd/projects/tmp/pycharm_project_18/embeddings/
     # structured_linear_cbow_500d'
-    dataset_dir = '/home/downey/PycharmProjects/vecto_analogies/BATS/' \
+    dataset_dir = '/home/mattd/Pycharm/vecto_analogies/BATS/' \
                   'BATS_collective/'
     # dataset_dir = '/home/mattd/projects/tmp/pycharm_project_18/
     # BATS/BATS_collective/'
     classifier = Classifier(name_classifier='LR',
-                                inverse_regularization_strength=.01)
+                                inverse_regularization_strength=.05)
 
-    classifier.run(embedding_dir, dataset_dir, 10, 'data9')
-
+    classifier.run(embedding_dir, dataset_dir, 5, 'data10')
 
 main()
